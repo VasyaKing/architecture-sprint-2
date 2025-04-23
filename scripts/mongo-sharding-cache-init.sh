@@ -83,14 +83,14 @@ docker exec -i router1 mongosh --port 27020 <<EOF
 print("Adding shards...");
 const res1 = sh.addShard("shard1ReplSet/shard1_1:27018,shard1_2:27018,shard1_3:27018");
 print("Add shard1 result:", JSON.stringify(res1));
-if (!res1.ok) {
+if (!res1 || !res1.ok) {
   print("Failed to add shard1ReplSet");
   quit(1);
 }
 
 const res2 = sh.addShard("shard2ReplSet/shard2_1:27019,shard2_2:27019,shard2_3:27019");
 print("Add shard2 result:", JSON.stringify(res2));
-if (!res2.ok) {
+if (!res2 || !res2.ok) {
   print("Failed to add shard2ReplSet");
   quit(1);
 }
